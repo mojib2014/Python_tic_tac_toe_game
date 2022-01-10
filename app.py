@@ -11,14 +11,13 @@ Session(app)
 
 @app.route("/")
 def index():
-    board_not_empty = False
     if "board" not in session:
         session["board"] = [[None, None, None], [None, None, None], [None, None, None]]
         session["turn"] = "X"
     winner = check_winner(session["board"])
-    if winner is not None:
+    if winner:
         return render_template("game.html", game=session["board"], turn=session["turn"], winner=winner)
-    return render_template("game.html", game=session["board"], turn=session["turn"])       
+    else: return render_template("game.html", game=session["board"], turn=session["turn"])       
 
 @app.route("/play/<int:row>/<int:col>")
 def play(row, col):
