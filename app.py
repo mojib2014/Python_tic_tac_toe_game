@@ -9,13 +9,15 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
+BOARD = [[None, None, None], [None, None, None], [None, None, None]]
+
 @app.route("/")
 def index():
     if "board" not in session:
-        session["board"] = [[None, None, None], [None, None, None], [None, None, None]]
+        session["board"] = BOARD
         session["turn"] = "X"
     winner = check_winner(session["board"])
-    if winner:
+    if winner is True:
         return render_template("game.html", game=session["board"], turn=session["turn"], winner=winner)
     else: return render_template("game.html", game=session["board"], turn=session["turn"])       
 
@@ -30,7 +32,7 @@ def play(row, col):
 
 @app.route("/reset")
 def reset():
-    session["board"] = [[None, None, None], [None, None, None], [None, None, None]]
+    session["board"] = BOARD
     session["turn"] = "X"
     return redirect(url_for("index"))
 

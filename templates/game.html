@@ -41,12 +41,15 @@
     <h1>Winner is: {{winner}}</h1>
     {% endif %}
     <table>
-      {% for i in range(3) %}
+      {% for row in range(3) %}
       <tr>
-        {% for j in range(3) %}
+        {% for col in range(3) %}
         <td>
-          {% if game[i][j] %} {{ game[i][j]}} {% elif winner %} {% else %}
-          <a href="{{ url_for('play', row=i, col=j) }}">Play {{turn}} here.</a>
+          {% if game[row][col] %} {{ game[row][col] }} {% elif winner %} {% else
+          %}
+          <a href="{{ url_for('play', row=row, col=col) }}"
+            >Play {{turn}} here.</a
+          >
           {% endif %}
         </td>
         {% endfor %}
