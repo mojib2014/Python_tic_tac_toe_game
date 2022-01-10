@@ -17,9 +17,10 @@ def index():
         session["board"] = BOARD
         session["turn"] = "X"
     winner = check_winner(session["board"])
-    if winner is True:
+    if winner is not None:
         return render_template("game.html", game=session["board"], turn=session["turn"], winner=winner)
-    else: return render_template("game.html", game=session["board"], turn=session["turn"])       
+    else:
+        return render_template("game.html", game=session["board"], turn=session["turn"])       
 
 @app.route("/play/<int:row>/<int:col>")
 def play(row, col):
