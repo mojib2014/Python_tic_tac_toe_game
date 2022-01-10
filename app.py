@@ -38,35 +38,35 @@ def reset():
 # Check for winner
 def check_winner(board):
     # Checking rows
-    for row in range(len(board)):
-        for col in range(len(board)):
-            if board[row][0] == None:
+    for row in range(3):
+        for col in range(3):
+            if board[row][0] is None:
                 break
             if board[row][0] == board[row][1] and board[row][1] == board[row][2]:
                 return board[row][0]
 
 
     # Checking columns
-    for row in range(len(board)):
-        for col in range(len(board)):
-            if board[0][row] == None:
+    for row in range(3):
+        for col in range(3):
+            if board[0][row] is None:
                 break
             if board[0][row] == board[1][row] and board[1][row] == board[2][row]:
                 return board[0][row]
 
     # Checking diagonal
-    for row in range(len(board)):
-        for col in range(len(board)):
+    for row in range(3):
+        for col in range(3):
             if board[0][0] == board[1][1] and board[1][1] == board[2][2]:
                 if board[0][0] is not None:
                     return board[0][0]
 
     # Checking the oposite diagonal
-    for row in range(len(board)):
-        for col in range(len(board)):
+    for row in range(3):
+        for col in range(3):
             if board[0][2] == board[1][1] and board[1][1] == board[2][0]:
-                if board[0][2] is not None:
-                    return board[0][2]
+                if board[1][1] is not None:
+                    return board[1][1]
 
 
-    return None
+    return None  
