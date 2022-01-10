@@ -39,19 +39,15 @@
   <body>
     {% if winner %}
     <h1>Winner is: {{winner}}</h1>
-    {% endif %} {% if draw %}
-    <h1>It's a {{draw}}</h1>
     {% endif %}
     <table>
       {% for i in range(3) %}
       <tr>
         {% for j in range(3) %}
         <td>
-          {% if game[i][j] %} {{ game[i][j]}} {% else %} {% if winner %} {% else
-          %}
+          {% if game[i][j] %} {{ game[i][j]}} {% elif winner %} {% else %}
           <a href="{{ url_for('play', row=i, col=j) }}">Play {{turn}} here.</a>
-
-          {% endif %} {% endif %}
+          {% endif %}
         </td>
         {% endfor %}
       </tr>
