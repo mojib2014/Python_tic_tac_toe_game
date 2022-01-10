@@ -50,7 +50,7 @@ def check_winner(board):
     # Checking columns
     for row in range(len(board)):
         for col in range(len(board)):
-            if board[0][col] == None:
+            if board[0][row] == None:
                 break
             if board[0][col] == board[1][col] and board[1][col] == board[2][col]:
                 return board[0][col]
@@ -58,16 +58,12 @@ def check_winner(board):
     # Checking diagonal
     for row in range(len(board)):
         for col in range(len(board)):
-            if board[0][0] == None:
-                break
             if board[0][0] == board[1][1] and board[1][1] == board[2][2]:
                 return board[0][0]
 
     # Checking the oposite diagonal
     for row in range(len(board)):
         for col in range(len(board)):
-            if board[0][2] == None:
-                break
             if board[0][2] == board[1][1] and board[1][1] == board[2][0]:
                 return board[0][2]
 
